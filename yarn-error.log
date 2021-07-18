@@ -1,0 +1,36 @@
+Arguments: 
+  /home/paulo/.nvm/versions/node/v14.17.2/bin/node /home/paulo/.nvm/versions/node/v14.17.2/bin/yarn init
+
+PATH: 
+  /home/paulo/.nvm/versions/node/v14.17.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Python39/Scripts/:/mnt/c/Python39/:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Pulse Secure/VC142.CRT/X64/:/mnt/c/Program Files (x86)/Pulse Secure/VC142.CRT/X86/:/mnt/c/Program Files (x86)/Common Files/Pulse Secure/VC142.CRT/X64/:/mnt/c/Program Files (x86)/Common Files/Pulse Secure/VC142.CRT/X86/:/mnt/c/Program Files (x86)/Symantec/VIP Access Client/:/mnt/c/Program Files/nodejs/:/mnt/c/Users/paulo.vaz/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/paulo.vaz/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/paulo.vaz/AppData/Local/Programs/Git/cmd:/mnt/c/Users/paulo.vaz/AppData/Roaming/npm
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/home/paulo/.nvm/versions/node/v14.17.2/lib/node_modules/yarn/lib/cli.js:136216:13)
+      at Interface.emit (events.js:375:28)
+      at Interface._ttyWrite (readline.js:910:16)
+      at ReadStream.onkeypress (readline.js:235:10)
+      at ReadStream.emit (events.js:375:28)
+      at emitKeys (internal/readline/utils.js:358:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1179:36)
+      at ReadStream.emit (events.js:375:28)
+      at addChunk (internal/streams/readable.js:290:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
