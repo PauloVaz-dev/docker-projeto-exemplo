@@ -25,5 +25,5 @@ app.get('/products', function(req, res) {
 });
 
 app.listen(3000, function() {
-    console.log('Listening on port 9001');
+    console.log('Listening on port 3000');
 })
