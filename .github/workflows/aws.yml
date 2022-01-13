@@ -44,6 +44,6 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS. 
         docker build -t  public.ecr.aws/w7c5p7b8/ngnix:ngnix-2 ./ngnix
-        #docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push public.ecr.aws/w7c5p7b8/ngnix:ngnix-2
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
         
