@@ -30,7 +30,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: sa-east-1
+        aws-region: sa-east-1 
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -40,13 +40,14 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
+        ECR_REPOSITORY: ngnix
+        IMAGE_TAG: ngnix
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t public.ecr.aws/w7c5p7b8/ngnix:ngnix-2 ./ngnix
-        docker push public.ecr.aws/w7c5p7b8/ngnix:ngnix-2
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./ngnix
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::w7c5p7b8/ngnix:ngnix-2"
 
    # - name: Fill in the new image ID in the Amazon ECS task definition
