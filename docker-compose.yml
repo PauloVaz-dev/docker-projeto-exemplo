@@ -1,0 +1,22 @@
+nginx:
+ build: "./ngnix/"
+ container_name: nginx-container
+ restart: always
+ ports:
+  - "8080:8080"
+ volumes: 
+  - ./www:/www
+ links:
+ - nodefront
+ - php
+nodefront:
+ build: "./nodefront/"
+ container_name: nodefront-container
+ restart: always
+ ports:
+  - "3000:3000"
+php:
+ build: "./php-fpm-scheduler/"
+ container_name: php-fpm
+ volumes:
+ - ./www:/www
