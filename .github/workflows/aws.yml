@@ -1,22 +1,11 @@
+on: push
+
 name: Deploy to Amazon ECS
-
-on:
-  push:
-    branches:
-      - main
-
-env:
-  AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
-  ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
-  CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
     - name: Checkout
@@ -27,7 +16,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: eu-west-1
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -37,13 +26,12 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ngnix
-        ECR_REPOSITORY: nodejs
+        ECR_REPOSITORY: ngix
+        IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
         # push it to ECR so that it can
-        # be deployed to ECS. 
-        docker build -t  $ECR_REGISTRY/ngnix:ngnix-2 ./ngnix
-        docker push $ECR_REGISTRY/ngnix:ngnix-2
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-        
